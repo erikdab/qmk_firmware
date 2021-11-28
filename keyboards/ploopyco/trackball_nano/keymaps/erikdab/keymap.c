@@ -55,26 +55,12 @@ void keyboard_post_init_user(void) {
 }
 
 bool led_update_user(led_t led_state) {
-	// static uint8_t lock_count = 0;
-	// static uint16_t scroll_timer = 0;
-
-	// if (timer_elapsed(scroll_timer) > 25) {
-	// 	scroll_timer = timer_read();
-	// 	lock_count = 0;
-	// }
-    
 	if (led_state.caps_lock != lock_state) {
-		// lock_count++;
-
-		// if (lock_count == 2) {
-			scroll_enabled = !lock_state;
-			// lock_count = 0;
-			delta_x = 0;
-			delta_y = 0;
-		// }
+		scroll_enabled = !lock_state;
+		delta_x = 0;
+		delta_y = 0;
 	}
 
 	lock_state = led_state.caps_lock;
-	// scroll_enabled = lock_state;
 	return true;
 }
