@@ -183,7 +183,7 @@ bool get_permissive_hold(uint16_t keycode, keyrecord_t *record) {
 uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
         case GUI_A:
-            return TAPPING_TERM * 3;
+            return TAPPING_TERM * 5;
         default:
             return TAPPING_TERM;
     }
