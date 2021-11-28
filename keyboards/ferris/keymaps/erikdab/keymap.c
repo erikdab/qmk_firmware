@@ -198,3 +198,20 @@ bool get_tapping_force_hold(uint16_t keycode, keyrecord_t *record) {
             return true;
     }
 }
+
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+    switch (keycode) {
+        case QWERTY:
+            set_single_persistent_default_layer(_QWERTY);
+            return true;
+
+        case COLEMAK:
+            set_single_persistent_default_layer(_COLEMAK);
+            return true;
+
+        case DVORAK:
+            set_single_persistent_default_layer(_DVORAK);
+            return true;
+    }
+    return true;
+}
