@@ -18,7 +18,9 @@
 #include QMK_KEYBOARD_H
 
 enum layers {
-    _BASE = 0,
+    _QWERTY = 0,
+    _COLEMAK,
+    _DVORAK,
     _GAME,
     _MEDR,
     _NAVR,
@@ -28,24 +30,51 @@ enum layers {
     _NSSL,
 };
 
-/* Add definitions for MT and LT */
+/* QWERTY */
 #define SHFT_F MT(MOD_LSFT, KC_F)
 #define SHFT_J MT(MOD_RSFT, KC_J)
 #define CTRL_D MT(MOD_LCTL, KC_D)
 #define CTRL_K MT(MOD_LCTL, KC_K)
 #define ALT_S MT(MOD_LALT, KC_S)
 #define ALT_L MT(MOD_LALT, KC_L)
-#define AGR_X MT(MOD_RALT, KC_X)
 #define AGR_DOT MT(MOD_RALT, KC_DOT)
 #define GUI_A MT(MOD_LGUI, KC_A)
 #define GUI_QUOT MT(MOD_LGUI, KC_QUOT)
+#define QWERTY DF(_QWERTY)
+
+/* COLEMAK */
+#define SHFT_T MT(MOD_LSFT, KC_T)
+#define SHFT_N MT(MOD_RSFT, KC_N)
+#define SFT_ENT MT(MOD_LSFT, KC_ENT)
+#define CTRL_S MT(MOD_LCTL, KC_S)
+#define CTRL_E MT(MOD_LCTL, KC_E)
+#define ALT_R MT(MOD_LALT, KC_R)
+#define ALT_I MT(MOD_LALT, KC_I)
+#define AGR_DOT MT(MOD_RALT, KC_DOT)
+#define GUI_A MT(MOD_LGUI, KC_A)
+#define GUI_O MT(MOD_LGUI, KC_O)
+#define COLEMAK DF(_COLEMAK)
+
+/* COLEMAK */
+#define SHFT_U MT(MOD_LSFT, KC_U)
+#define SHFT_H MT(MOD_RSFT, KC_H)
+#define CTRL_E MT(MOD_LCTL, KC_E)
+#define CTRL_T MT(MOD_LCTL, KC_T)
+#define ALT_O MT(MOD_LALT, KC_O)
+#define ALT_N MT(MOD_LALT, KC_N)
+#define GUI_A MT(MOD_LGUI, KC_A)
+#define GUI_S MT(MOD_LGUI, KC_S)
+#define DVORAK DF(_DVORAK)
+
+/* Thumb Keys */
 #define MED_ESC LT(_MEDR, KC_ESC)
 #define NAV_SPC LT(_NAVR, KC_SPC)
 #define MOS_TAB LT(_MOUR, KC_TAB)
 #define SYM_ENT LT(_NSSL, KC_ENT)
 #define NUM_BSC LT(_NSL, KC_BSPC)
 #define FN_DEL LT(_FUNL, KC_DEL)
-#define BASE DF(_BASE)
+
+/* OTHER DEFINITIONS */
 #define GAME DF(_GAME)
 #define U_RDO KC_AGIN
 #define U_PST S(KC_INS)

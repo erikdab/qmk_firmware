@@ -19,13 +19,37 @@
 #include "g/keymap_combo.h"
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-    [_BASE] = LAYOUT( \
+    [_QWERTY] = LAYOUT( \
  //,--------------------------------------------.  ,--------------------------------------------.
         KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,       KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,\
  //|--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------|
-       GUI_A,   ALT_S,  CTRL_D,  SHFT_F,    KC_G,       KC_H,  SHFT_J,  CTRL_K,   ALT_L,   GUI_QUOT,\
+       GUI_A,   ALT_S,  CTRL_D,  SHFT_F,    KC_G,       KC_H,  SHFT_J,  CTRL_K,   ALT_L,GUI_QUOT,\
  //|--------+--------+--------+--------+--------.  ,--------+--------+--------+--------+--------|
         KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,       KC_N,    KC_M, KC_COMM, AGR_DOT, KC_SLSH,\
+ //`-----------------+--------+--------+--------|  |--------+--------+--------+-----------------'
+                                NAV_SPC, MOS_TAB,    SYM_ENT, NUM_BSC \
+                            //`-----------------'  `-----------------'
+    ),
+
+    [_COLEMAK] = LAYOUT( \
+ //,--------------------------------------------.  ,--------------------------------------------.
+        KC_Q,    KC_W,    KC_F,    KC_P,    KC_B,       KC_J,    KC_L,    KC_U,    KC_Y, KC_QUOT,\
+ //|--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------|
+       GUI_A,   ALT_R,  CTRL_S,  SHFT_T,    KC_G,       KC_M,  SHFT_N,  CTRL_E,   ALT_I,   GUI_O,\
+ //|--------+--------+--------+--------+--------.  ,--------+--------+--------+--------+--------|
+        KC_Z,    KC_X,    KC_C,    KC_D,    KC_V,       KC_K,    KC_H, KC_COMM, AGR_DOT, KC_SLSH,\
+ //`-----------------+--------+--------+--------|  |--------+--------+--------+-----------------'
+                                NAV_SPC, MOS_TAB,    SYM_ENT, NUM_BSC \
+                            //`-----------------'  `-----------------'
+    ),
+
+    [_DVORAK] = LAYOUT( \
+ //,--------------------------------------------.  ,--------------------------------------------.
+     KC_QUOT, KC_COMM,  KC_DOT,    KC_P,    KC_Y,       KC_F,    KC_G,    KC_C,    KC_R, KC_SLSH,\
+ //|--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------|
+       GUI_A,   ALT_O,  CTRL_E,  SHFT_U,    KC_I,       KC_D,  SHFT_H,  CTRL_T,   ALT_N,   GUI_S,\
+ //|--------+--------+--------+--------+--------.  ,--------+--------+--------+--------+--------|
+     KC_COLN,    KC_Q,    KC_J,    KC_K,    KC_X,       KC_B,    KC_M,    KC_W,    KC_V,    KC_Z,\
  //`-----------------+--------+--------+--------|  |--------+--------+--------+-----------------'
                                 NAV_SPC, MOS_TAB,    SYM_ENT, NUM_BSC \
                             //`-----------------'  `-----------------'
@@ -45,7 +69,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [_MEDR] = LAYOUT( \
  //,--------------------------------------------.  ,--------------------------------------------.
-     _______,    GAME,    BASE, _______, _______,    RGB_TOG, RGB_MOD, RGB_HUI, RGB_SAI, RGB_VAI,\
+     _______,    GAME,  QWERTY, COLEMAK,  DVORAK,    RGB_TOG, RGB_MOD, RGB_HUI, RGB_SAI, RGB_VAI,\
  //|--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------|
      KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT, _______,    _______, KC_MPRV, KC_VOLD, KC_VOLU, KC_MNXT,\
  //|--------+--------+--------+--------+--------.  ,-----------------+--------+--------+--------|
@@ -57,7 +81,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [_NAVR] = LAYOUT( \
  //,--------------------------------------------.  ,--------------------------------------------.
-     _______,    GAME,    BASE, _______, _______,      U_RDO,   U_PST,   U_CPY,   U_CUT,   U_UND,\
+     _______,    GAME,  QWERTY, COLEMAK,  DVORAK,      U_RDO,   U_PST,   U_CPY,   U_CUT,   U_UND,\
  //|--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------|
      KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT, _______,    KC_CAPS, KC_LEFT, KC_DOWN,   KC_UP, KC_RGHT,\
  //|--------+--------+--------+--------+--------.  ,-----------------+--------+--------+--------|
@@ -119,21 +143,49 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // Disabling permissive hold for home row mods.
 bool get_permissive_hold(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
+	/* QWERTY */
         case SHFT_F:
         case SHFT_J:
         case CTRL_D:
         case CTRL_K:
         case ALT_S:
         case ALT_L:
-        case AGR_X:
         case AGR_DOT:
         case GUI_A:
         case GUI_QUOT:
-            // This actually *disables* the permissive hold for these keys.
-            // See issue https://github.com/qmk/qmk_firmware/issues/8999
-            return true;
-        default:
+	/* COLEMAK */
+	case SHFT_T:
+        case SHFT_N:
+        case CTRL_S:
+        case CTRL_E:
+        case ALT_R:
+        case ALT_I:
+        /* case AGR_DOT: */
+        /* case GUI_A: */
+        case GUI_O:
+	/* DVORAK */
+	case SHFT_U:
+        case SHFT_H:
+        /* case CTRL_E: */
+        case CTRL_T:
+        case ALT_O:
+        case ALT_N:
+        /* case AGR_DOT: */
+        /* case GUI_A: */
+        case GUI_S:
+	    /* Disable permissive hold */
             return false;
+        default:
+            return true;
+    }
+}
+
+uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
+    switch (keycode) {
+        case GUI_A:
+            return TAPPING_TERM * 3;
+        default:
+            return TAPPING_TERM;
     }
 }
 

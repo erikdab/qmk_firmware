@@ -21,6 +21,7 @@
 
 // Fix problems with fast typing and homerow mods
 #define TAPPING_TERM 125
+#define TAPPING_TERM_PER_KEY
 #define PERMISSIVE_HOLD_PER_KEY
 #define IGNORE_MOD_TAP_INTERRUPT
 #define TAPPING_FORCE_HOLD_PER_KEY
