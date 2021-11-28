@@ -55,7 +55,7 @@ enum layers {
 #define GUI_O MT(MOD_LGUI, KC_O)
 #define COLEMAK DF(_COLEMAK)
 
-/* COLEMAK */
+/* DVORAK */
 #define SHFT_U MT(MOD_LSFT, KC_U)
 #define SHFT_H MT(MOD_RSFT, KC_H)
 #define CTRL_E MT(MOD_LCTL, KC_E)

@@ -143,7 +143,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // Disabling permissive hold for home row mods.
 bool get_permissive_hold(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
-	/* QWERTY */
+        /* --- QWERTY */
         case SHFT_F:
         case SHFT_J:
         case CTRL_D:
@@ -153,8 +153,8 @@ bool get_permissive_hold(uint16_t keycode, keyrecord_t *record) {
         case AGR_DOT:
         case GUI_A:
         case GUI_QUOT:
-	/* COLEMAK */
-	case SHFT_T:
+        /* --- COLEMAK */
+        case SHFT_T:
         case SHFT_N:
         case CTRL_S:
         case CTRL_E:
@@ -163,8 +163,8 @@ bool get_permissive_hold(uint16_t keycode, keyrecord_t *record) {
         /* case AGR_DOT: */
         /* case GUI_A: */
         case GUI_O:
-	/* DVORAK */
-	case SHFT_U:
+        /* --- DVORAK */
+        case SHFT_U:
         case SHFT_H:
         /* case CTRL_E: */
         case CTRL_T:
@@ -173,7 +173,7 @@ bool get_permissive_hold(uint16_t keycode, keyrecord_t *record) {
         /* case AGR_DOT: */
         /* case GUI_A: */
         case GUI_S:
-	    /* Disable permissive hold */
+        /* Disable permissive hold */
             return false;
         default:
             return true;
@@ -183,7 +183,7 @@ bool get_permissive_hold(uint16_t keycode, keyrecord_t *record) {
 uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
         case GUI_A:
-            return TAPPING_TERM * 5;
+            return 1000;
         default:
             return TAPPING_TERM;
     }
