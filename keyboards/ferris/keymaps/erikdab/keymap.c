@@ -180,10 +180,11 @@ bool get_permissive_hold(uint16_t keycode, keyrecord_t *record) {
     }
 }
 
+/* Maximum TAPPING_TERM is 499 before it's automatic permissive_hold */
 uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
         case GUI_A:
-            return 1000;
+            return 499;
         default:
             return TAPPING_TERM;
     }
