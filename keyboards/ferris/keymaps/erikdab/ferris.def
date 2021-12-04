@@ -21,4 +21,4 @@ COMB(sym,       KC_LPRN,        KC_UNDS, KC_RPRN)
 COMB(num,       KC_DOT,         KC_MINS, KC_0)
 
 // Fn
-COMB(fn,        KC_APP,         KC_SPC, UC(0x2014))
+//COMB(fn,        KC_APP,         KC_SPC, UC(0x2014))
