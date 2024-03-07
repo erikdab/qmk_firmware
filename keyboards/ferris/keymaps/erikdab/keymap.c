@@ -223,32 +223,32 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
         case KVM_1:  // Switches to device 1 on KVM
             if (record->event.pressed) {
-                tap_code(KC_SCRL);
-                tap_code(KC_SCRL);
+                tap_code(KC_LCTL);
+                tap_code(KC_LCTL);
                 tap_code(KC_1);
                 // send_unicode_string(SS_TAP(X_SCRL) SS_TAP(X_SCRL)"1");
             }
             return false;
         case KVM_2:  // Switches to device 2 on KVM
             if (record->event.pressed) {
-                tap_code(KC_SCRL);
-                tap_code(KC_SCRL);
+                tap_code(KC_LCTL);
+                tap_code(KC_LCTL);
                 tap_code(KC_2);
                 // send_unicode_string(SS_TAP(X_SCRL) SS_TAP(X_SCRL)"1");
             }
             return false;
         case KVM_3:  // Switches to device 3 on KVM
             if (record->event.pressed) {
-                tap_code(KC_SCRL);
-                tap_code(KC_SCRL);
+                tap_code(KC_LCTL);
+                tap_code(KC_LCTL);
                 tap_code(KC_3);
                 // send_unicode_string(SS_TAP(X_SCRL) SS_TAP(X_SCRL)"1");
             }
             return false;
         case KVM_4:  // Switches to device 4 on KVM
             if (record->event.pressed) {
-                tap_code(KC_SCRL);
-                tap_code(KC_SCRL);
+                tap_code(KC_LCTL);
+                tap_code(KC_LCTL);
                 tap_code(KC_4);
                 // send_unicode_string(SS_TAP(X_SCRL) SS_TAP(X_SCRL)"1");
             }
