@@ -18,6 +18,13 @@
 // #include "keymap_steno.h"
 #include "g/keymap_combo.h"
 
+enum custom_keycodes {
+  KVM_1 = SAFE_RANGE,
+  KVM_2,
+  KVM_3,
+  KVM_4,
+};
+
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_QWERTY] = LAYOUT( \
  //,--------------------------------------------.  ,--------------------------------------------.
@@ -73,7 +80,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  //|--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------|
      KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT, _______,    _______, KC_MPRV, KC_VOLD, KC_VOLU, KC_MNXT,\
  //|--------+--------+--------+--------+--------.  ,-----------------+--------+--------+--------|
-     _______, _______, _______, _______, _______,    _______, _______, _______, _______, _______,\
+     _______, _______, _______, _______, _______,    _______, KVM_1  , KVM_2  , KVM_3  , KVM_4  ,\
  //`-----------------+--------+--------+--------|  |--------+--------+--------+--------+--------'
                                 _______, _______,    KC_MSTP, KC_MPLY \
                             //`-----------------'  `-----------------'
@@ -181,14 +188,15 @@ bool get_permissive_hold(uint16_t keycode, keyrecord_t *record) {
 }
 
 /* Maximum TAPPING_TERM is 499 before it's automatic permissive_hold */
-uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
-    switch (keycode) {
-        case GUI_A:
-            return 300;
-        default:
-            return TAPPING_TERM;
-    }
-}
+// This is annoying most of the time. If I could just not allow left command + Q that would do it.
+// uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
+//     switch (keycode) {
+//         case GUI_A:
+//             return 300;
+//         default:
+//             return TAPPING_TERM;
+//     }
+// }
 
 bool get_tapping_force_hold(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
@@ -212,6 +220,39 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         case DVORAK:
             set_single_persistent_default_layer(_DVORAK);
             return true;
+
+        case KVM_1:  // Switches to device 1 on KVM
+            if (record->event.pressed) {
+                tap_code(KC_SCRL);
+                tap_code(KC_SCRL);
+                tap_code(KC_1);
+                // send_unicode_string(SS_TAP(X_SCRL) SS_TAP(X_SCRL)"1");
+            }
+            return false;
+        case KVM_2:  // Switches to device 2 on KVM
+            if (record->event.pressed) {
+                tap_code(KC_SCRL);
+                tap_code(KC_SCRL);
+                tap_code(KC_2);
+                // send_unicode_string(SS_TAP(X_SCRL) SS_TAP(X_SCRL)"1");
+            }
+            return false;
+        case KVM_3:  // Switches to device 3 on KVM
+            if (record->event.pressed) {
+                tap_code(KC_SCRL);
+                tap_code(KC_SCRL);
+                tap_code(KC_3);
+                // send_unicode_string(SS_TAP(X_SCRL) SS_TAP(X_SCRL)"1");
+            }
+            return false;
+        case KVM_4:  // Switches to device 4 on KVM
+            if (record->event.pressed) {
+                tap_code(KC_SCRL);
+                tap_code(KC_SCRL);
+                tap_code(KC_4);
+                // send_unicode_string(SS_TAP(X_SCRL) SS_TAP(X_SCRL)"1");
+            }
+            return false;
     }
     return true;
 }
