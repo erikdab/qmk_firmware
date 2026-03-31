@@ -1,5 +1,10 @@
 # The default keymap for Helix rev3 5rows
 
+Todos:
+- Move Windows key to a hard to press option
+- Move space there instead?
+- Add a print screen, volume up / down
+
 ### Qwerty Layer (Base)
 ```
 ,-----------------------------------------.             ,-----------------------------------------.
