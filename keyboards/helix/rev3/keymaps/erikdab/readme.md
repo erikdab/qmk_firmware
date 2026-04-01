@@ -1,5 +1,8 @@
 # The default keymap for Helix rev3 5rows
 
+qmk compile -kb helix/rev3 -km erikdab
+qmk flash -kb helix/rev3 -km erikdab -bl dfu
+
 Todos:
 - Move Windows key to a hard to press option
 - Move space there instead?
