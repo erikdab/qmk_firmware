@@ -15,11 +15,11 @@
  */
 #include QMK_KEYBOARD_H
 
-// Layer names
-// _GAME  : primary left-hand-only gaming layer
-// _SWAP   : extra numbers and punctuation used in some games
-// _FUNC   : arrows, F1-F12, media, and navigation shortcuts
-// _UTIL  : GUI, delete/backspace, boot/reset, and admin keys
+// Layer indices
+// 0 = _GAME : primary left-hand-only gaming layer
+// 1 = _UTIL : extra numbers, arrows, and print screen
+// 2 = _FUNC : arrows, F1-F12, and navigation shortcuts
+// 3 = _SWAP : right-half emulation and punctuation
 enum layer_names {
     _GAME = 0,
     _UTIL,
@@ -27,16 +27,13 @@ enum layer_names {
     _SWAP,
 };
 
-// Custom keycodes
-// ADJUST toggles the admin/media layer on and off.
-enum custom_keycodes {
-    ADJUST = SAFE_RANGE,
-};
 
 // Thumb and layer helpers
-#define UTIL     MO(_UTIL)
-#define FUNC      MO(_FUNC)
-#define SWAP     MO(_SWAP)
+// Use numeric layer references so c2json emits MO(1)/MO(2)/MO(3)
+// instead of MO(_UTIL)/MO(_FUNC)/MO(_SWAP).
+#define UTIL     MO(1)
+#define FUNC     MO(2)
+#define SWAP     MO(3)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     /* GAME
