@@ -24,6 +24,9 @@ git rebase upstream/master
 git submodule sync --recursive
 git submodule update --init --recursive
 
+# This will push your rebased branch to your fork, but only if it can be fast-forwarded.
+git push --force-with-lease origin erikdab
+
 # ============================================================
 # QMK compile and flash
 # ============================================================
